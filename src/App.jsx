@@ -3,6 +3,7 @@ import React from 'react';
 import './App.css'
 import Dashboard from './components/Dashboard.jsx'
 import RootLayout from './components/RootLayout.jsx'
+import Footer from './components/Footer.jsx'
 import Cart from './components/Cart.jsx'
 import { createBrowserRouter, createRoutesFromElements, RouterProvider, Route } from 'react-router-dom'
 
@@ -16,6 +17,7 @@ function App() {
   return (
     <div className='App'>
       <RouterProvider router={router} />
+      <Footer />
     </div>
   )
 }
