@@ -17,16 +17,21 @@ const Product = () => {
       .then(result => getProducts(result))
   })
   const cards = products.map(product => (
-    <div className="col-md-3" key={uniqueId()}>
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src="holder.js/100px180" />
+    <div className="col-md-3" key={product.id} style={{marginBottom: '10px'}}>
+      <Card className="h-100">
+        <div className='text-center'>
+          <Card.Img variant="top" src={product.image} style={{ width: '100px', height: '130px'}}/>
+        </div>
         <Card.Body>
-          <Card.Title>Card Title</Card.Title>
+          <Card.Title>{product.title}</Card.Title>
           <Card.Text>
-            Here will be description of the product
+            {product.price}£
           </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
         </Card.Body>
+
+        <Card.Footer style={{ background: 'white' }}>
+          <Button variant="primary">Add to Card</Button>
+        </Card.Footer>
     </Card>
     </div>
   ))
