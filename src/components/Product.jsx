@@ -3,10 +3,13 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { useDispatch } from 'react-redux';
+import { add } from '../store/cartSlice.jsx'
 
 
 const Product = () => {
-  const fakeAPI = new URL('https://fakestoreapi.com/products')
+  const fakeAPI = new URL('https://fakestoreapi.com/products');
+  const dispatch = useDispatch();
 
   const [products, getProducts] = useState([])
 
@@ -14,7 +17,13 @@ const Product = () => {
     axios.get(fakeAPI.href)
       .then(response => response.data)
       .then(result => getProducts(result))
-  })
+  }, []);
+
+  const addToCart = (product) => {
+    // dispatch an add action
+    dispatch(add(product))
+  }
+
   const cards = products.map(product => (
     <div className="col-md-3" key={product.id} style={{marginBottom: '10px'}}>
       <Card className="h-100">
@@ -29,7 +38,7 @@ const Product = () => {
         </Card.Body>
 
         <Card.Footer style={{ background: 'white' }}>
-          <Button variant="primary">Add to Card</Button>
+          <Button variant="primary" onClick={() => addToCart(product)}>Add to Cart</Button>
         </Card.Footer>
     </Card>
     </div>
