@@ -1,8 +1,10 @@
 import React from 'react'
+import Product from './Product.jsx'
+
 const Dashboard = () => {
   return (
     <>
-    <h2>Dashboard</h2>
+    <Product />
     </>
   )
 }
